@@ -1,0 +1,23 @@
+#jum{
+	height: 130px;
+	background-color: #ffffff;
+}
+
+#title1{
+	font-family: David;
+	font-weight: 900;
+	color: #173644;
+	padding-left: 10%;
+}
+
+@media only screen and (min-width: 768px) {
+	#title1{
+		font-size: 7vw;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	#title1{
+		font-size: 44px;
+	}
+}

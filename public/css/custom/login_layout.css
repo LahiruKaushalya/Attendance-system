@@ -1,0 +1,66 @@
+#btn{
+	font-family: David;
+	font-weight: 800;
+	background-color: #19749e;
+	border-color: #19749e;
+	border-radius: 5px;
+}
+#btn:hover{
+	background-color: #173644;
+}
+#pass{
+	padding-bottom: 10px;
+}
+.radio-inline{
+	font-family: David;
+	font-weight: 800;
+}
+.well{
+	margin-top: 20px;
+	background-color: #d2def2;
+}
+.h4{
+	font-family: David;
+	font-weight: 800;
+}
+
+@media only screen and (min-width: 768px) {
+    #login-form{
+		width:60%;
+		margin-top: 20px;
+	}
+	.form-group{
+		width: 80%;
+		margin-left: 10%;
+	}
+	#user{
+		padding-top:20px; 
+	}
+	.btn{
+		width: 25%;
+		margin: 2%;
+	}
+	
+}
+@media only screen and (max-width: 768px) {
+    #login-form{
+		width:95%;
+		margin-top: 20px;
+	}
+	.form-group{
+		width: 90%;
+		margin-left: 5%;
+	}
+	#user{
+		padding-top:25px; 
+	}
+	.btn{
+		width: 43%;
+		margin: 1%;
+	}
+	.well{
+		margin-top: 40px;
+		padding-top: 30px;
+		padding-bottom: 30px;
+	}
+}

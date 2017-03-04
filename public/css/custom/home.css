@@ -1,0 +1,24 @@
+
+#text{
+	padding-top: 20px;
+	padding-left: 40px;
+	font-family: David;
+	font-weight: 400;
+}
+#image{
+	margin: 0px;
+	padding-right: 0px;
+}
+
+@media only screen and (min-width: 568px) {
+	#text{
+		font-size: 6vw;
+	}
+}
+
+@media only screen and (max-width: 568px) {
+	#text{
+		font-size: 36px;
+		padding-top: 20px;
+	}
+}

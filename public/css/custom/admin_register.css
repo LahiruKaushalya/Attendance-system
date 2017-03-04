@@ -1,0 +1,73 @@
+input[type="text"] {
+    font-size:18px;
+}
+
+input[type="email"] {
+    font-size:18px;
+}
+
+input[type="submit"] {
+    font-size:18px;
+}
+
+#main{
+	padding-top: 1%;
+	padding-left: 8%;
+	padding-right: 8%;
+	font-family: David;
+	font-size: 18px;
+}
+#title h2{
+	margin-top: 0px;
+	margin-bottom: 0px;
+	font-weight: 600;
+	font-size: 30px;
+	color: #000000;
+}
+#main div{
+	padding: 8px;
+}
+#main label{
+	margin-left: 0px;
+}
+#btn{
+	font-family: David;
+	font-size: 18px;
+	font-weight: 900;
+	color: #FFFFFF;
+	background-color: #19749e;
+	border-color: #19749e;
+	border-radius: 5px;
+	min-width: 90px;
+	height: 40px;
+	width: 25%;
+	margin-top: 5px;
+	margin-bottom: 0px;
+}
+#btn:hover{
+	background-color: #173644;
+}
+.fa{
+	color: #bf0909;
+	position: absolute;
+}
+textarea {
+   resize: none;
+   margin-bottom: 0px;
+}
+
+@media only screen and (max-width: 768px) {
+	#main{
+		margin-top: 10px;
+	}
+}
+@media only screen and (min-width: 768px) {
+	#main{
+		margin-right: 28%;
+	}
+}
+@media only screen and (min-width: 900px) {
+	#main{
+		margin-right: 280px;
+	}
+}
