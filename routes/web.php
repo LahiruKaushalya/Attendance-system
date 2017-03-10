@@ -53,15 +53,24 @@ Route::group(['middleware'=>['web']],function(){
 			'uses' => 'AdminController@post_register',
 			'as'=>'post_register'
 		]);
-		
-		Route::get('/details', [
-			'uses' => 'AdminController@admin_details',
-			'as' => 'get_admin_details'
-		]);
 
 		Route::get('/records', [
 			'uses' => 'AdminController@admin_records',
 			'as' => 'get_admin_records'
+		]);
+
+	});
+
+	Route::prefix('/admin/details')->group(function(){
+
+		Route::get('/', [
+			'uses' => 'AdminController@admin_details',
+			'as' => 'get_admin_details'
+		]);
+
+		Route::post('/search', [
+			'uses' => 'SharedController@search',
+			'as' => 'search'
 		]);
 
 	});
@@ -150,14 +159,24 @@ Route::group(['middleware'=>['web']],function(){
 			'as' => 'get_teacher_profile'
 		]);
 
-		Route::get('/records', [
-			'uses' => 'TeacherController@teacher_records',
-			'as' => 'get_teacher_records'
+	});
+
+	Route::prefix('/teacher/details')->group(function(){
+
+		Route::get('/', [
+			'uses' => 'TeacherController@teacher_details',
+			'as' => 'get_teacher_details'
+		]);
+
+		Route::post('/search', [
+			'uses' => 'SharedController@search',
+			'as' => 'search'
 		]);
 
 	});
 
 	Route::prefix('/teacher/profile')->group(function(){
+
 		Route::get('/', [
 			'uses' => 'TeacherController@teacher_profile',
 			'as' => 'get_teacher_profile'

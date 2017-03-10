@@ -1,7 +1,14 @@
 @extends('layouts/main_header')
 
+@section('home')
+   <p>
+      <a href="{{route('home')}}">
+         <i class="fa fa-home fa-2x"></i>
+      </a>
+   </p>
+@stop
+
 @section('routes')
-   <li><a href="{{route('home')}}"><i class="fa fa-home fa-md"></i></a>
    <li><a href="{{route('get_student_login')}}">Student</a></li>
    <li><a href="{{route('get_teacher_login')}}">Teacher</a></li>
    <li><a href="{{route('get_admin_login')}}">Admin</a></li>

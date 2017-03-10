@@ -12,7 +12,8 @@ class Admin extends Authenticatable
     protected $guard = 'admin';
     protected $table = 'admins';
     protected $primaryKey = 'user_name';
-
+    protected $casts = ['user_name' => 'string'];
+    
     /**
      * The attributes that are mass assignable.
      *

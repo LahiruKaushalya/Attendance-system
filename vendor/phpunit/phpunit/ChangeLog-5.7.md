@@ -2,6 +2,21 @@
 
 All notable changes of the PHPUnit 5.7 release series are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [5.7.15] - 2017-03-02
+
+### Fixed
+
+* Fixed [#1999](https://github.com/sebastianbergmann/phpunit/issues/1999): Handler is inherited from previous custom option with handler
+* Fixed [#2149](https://github.com/sebastianbergmann/phpunit/issues/2149): `assertCount()` does not handle generators properly
+* Fixed [#2478](https://github.com/sebastianbergmann/phpunit/issues/2478): Tests that take too long are not reported as risky test
+
+## [5.7.14] - 2017-02-19
+
+### Fixed
+
+* Fixed [#2489](https://github.com/sebastianbergmann/phpunit/issues/2489): `processUncoveredFilesFromWhitelist` is not handled correctly
+* Fixed default values for `addUncoveredFilesFromWhitelist` and `processUncoveredFilesFromWhitelist` in `phpunit.xsd`
+
 ## [5.7.13] - 2017-02-10
 
 ### Fixed
@@ -24,7 +39,7 @@ All notable changes of the PHPUnit 5.7 release series are documented in this fil
 
 ### Fixed
 
-* Fixed [#2462](https://github.com/sebastianbergmann/phpunit/issues/2462): Code Coverage blacklist is filled even if no code coverage data is to be collected
+* Fixed [#2462](https://github.com/sebastianbergmann/phpunit/issues/2462): Code Coverage whitelist is filled even if no code coverage data is to be collected
 
 ## [5.7.9] - 2017-01-28
 
@@ -111,6 +126,8 @@ All notable changes of the PHPUnit 5.7 release series are documented in this fil
 * The `--tap` and `--log-tap` commandline options have been deprecated
 * The `--self-update` and `--self-upgrade` commandline options have been deprecated (PHAR binary only)
 
+[5.7.15]: https://github.com/sebastianbergmann/phpunit/compare/5.7.14...5.7.15
+[5.7.14]: https://github.com/sebastianbergmann/phpunit/compare/5.7.13...5.7.14
 [5.7.13]: https://github.com/sebastianbergmann/phpunit/compare/5.7.12...5.7.13
 [5.7.12]: https://github.com/sebastianbergmann/phpunit/compare/5.7.11...5.7.12
 [5.7.11]: https://github.com/sebastianbergmann/phpunit/compare/5.7.10...5.7.11

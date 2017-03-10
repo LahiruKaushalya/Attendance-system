@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Facades\DB;
 use App\Admin;
 use App\Student;
 use App\Teacher;
@@ -55,8 +57,6 @@ class AdminController extends Controller
       else{
           return redirect()->back();
       }
-    
-
       // if unsuccessful, then redirect back to the login with the form data
       return redirect()->back()->withInput($request->only('email', 'remember'));
     }
@@ -90,9 +90,11 @@ class AdminController extends Controller
 
         if($user_type == "0"){
             $var = new Student();
+            QrCode::format('png')->size(500)->generate( $user_name , "../public/qrcodes/students/$user_name.png");
         }
         else if($user_type == "1"){
             $var = new Teacher();
+            QrCode::format('png')->size(500)->generate( $user_name , "../public/qrcodes/teachers/$user_name.png");
         }
         else if($user_type == "2"){
             $var = new Admin();
@@ -108,19 +110,23 @@ class AdminController extends Controller
         $var->telephone = $tel;
         $var->email = $email;
         $var->other = $other;
-        
-        $var->save();
 
+        $var->save();
         return redirect()->back();
     }
 
+    public function admin_records() {
+        $students = DB::table('students')
+                ->select('user_name',DB::raw("CONCAT(first_name,' ',last_name) as full_name"))
+                ->get();
+        $teachers = DB::table('teachers')
+                ->select('user_name',DB::raw("CONCAT(first_name,' ',last_name) as full_name"))
+                ->get();
+        return view('admin_records',compact('students','teachers'));
+    }
 
     public function admin_details() {
         return view('admin_details');
-    }
-
-    public function admin_records() {
-        return view('admin_records');
     }
     
 }

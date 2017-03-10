@@ -3,13 +3,26 @@
 	min-height: 150px;
 	margin-bottom: 0px;
 }
+
+#navbar p{
+	color: #ffffff;
+	padding-left: 20px;
+	padding-top: 10px;
+}
+
+#navbar i{
+	color: #ffffff;
+}
+
 .active{
 	color: #19749e;
 }
+
 .navbar-toggle{
   	background-color: #173644;
   	border-color: #FFFFFF;
 }
+
 #title{
 	margin-left: 20px;
 	padding: 0px;
@@ -18,9 +31,11 @@
 	font-weight: 900;
 	color: #FFFFFF;
 }
+
 #qr-image{
 	margin-right: 40px;
 }
+
 #navbar{
 	margin-top: 0px;
 	margin-bottom: 0px;
@@ -28,6 +43,7 @@
 	border-color: #173644;
 	border-radius: 0px;
 }
+
 #collapse a{
 	font-family: David;
 	font-size: 20px;
@@ -35,6 +51,7 @@
 	color: #FFFFFF;
 	border-color: #19749e;
 }
+
 #collapse a:hover{
 	color: #173644;
 }

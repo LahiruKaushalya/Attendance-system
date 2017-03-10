@@ -1,0 +1,52 @@
+#background{
+	padding-top: 40px;
+	padding-right: 4%;
+	padding-left: 4%;
+}
+
+.well{
+	font-family: David;
+	background-color: #ffffff;
+	border: 1px solid #173644;
+	padding-top: 4%;
+	padding-bottom: 5%;
+}
+
+.well label{
+	font-size: 20px;
+}
+
+.well input{
+	font-size: 18px;
+}
+
+.well h3{
+	font-size: 24px;
+	font-weight: 600;
+	margin-top: 0px;
+	margin-bottom: 30px;
+}
+
+.row{
+	padding: 10px;
+	margin-top: 10px;
+	padding-right: 3%;
+	padding-left: 2%;
+}
+
+@media only screen and (max-width: 768px) {
+	.well{
+		margin-top: 10px;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.well{
+		margin-right: 28%;
+	}
+}
+@media only screen and (min-width: 900px) {
+	.well{
+		margin-right: 280px;
+	}
+}

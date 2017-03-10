@@ -20,9 +20,6 @@
       @yield('active')
 
       <div class="jumbotron visible-xs" id="jum-hor">
-         <div class="text-right hidden-xs" id="qr-image">
-            <a href=""><img src="{{URL::asset('img/qr.png')}}" alt="image"></a>
-         </div>
          <div class="text-left" id="title">Attendance System</div>
       </div>
 
@@ -36,6 +33,11 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                </button>
+               <p>{{Auth::User()->user_name}}
+                  <a href= @yield('logout_route')>
+                     <i class="fa fa-sign-out fa-md"></i>
+                  </a>
+               </p>
             </div>
 
             <div class="navbar-collapse collapse" id="hor-collapse">
@@ -53,6 +55,7 @@
       <nav class="navbar navbar-inverse navbar-fixed-right hidden-xs" id="ver-nav">
          <div class="container">
             <div class="navbar-header" id="ver-logout">
+               <p>{{Auth::User()->user_name}}</p>
                <a href= @yield('logout_route') ><i class="fa fa-sign-out fa-2x"></i></a>
             </div>
            

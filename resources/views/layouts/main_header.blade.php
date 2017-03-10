@@ -32,7 +32,9 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                </button>
+               @yield('home')
             </div>
+            
             <div class="navbar-collapse collapse" id="collapse">
                <ul class="nav nav-pills navbar-right" id="nav">
                   @yield('routes')

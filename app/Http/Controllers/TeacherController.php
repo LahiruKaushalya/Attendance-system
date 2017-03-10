@@ -38,8 +38,14 @@ class TeacherController extends Controller
         return view('teacher_login');
     }
 
-    public function teacher_profile() {
+    public function teacher_details() {
+        $data = DB::table('students')
+                ->select('user_name',DB::raw("CONCAT(first_name,' ',last_name) as full_name"))
+                ->get();
+        return view('teacher_details',compact('data'));
+    }
 
+    public function teacher_profile() {
         $user_name = Auth::User()->user_name;
         $data = DB::table('teachers')
                 ->select('*' , DB::raw("CONCAT(first_name,' ',last_name) as full_name"))
@@ -48,9 +54,4 @@ class TeacherController extends Controller
 
         return view('shared_profile',compact('data'));
     }
-
-    /*public function teacher_records() {
-        return view('teacher_records');
-    }*/
-
 }

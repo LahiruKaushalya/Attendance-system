@@ -1,0 +1,76 @@
+#background{
+	padding-top: 40px;
+	padding-right: 4%;
+	padding-left: 4%;
+}
+
+#controller{
+	border:	none; 
+	font-family: David;
+	margin-bottom: 30px;
+}
+
+#controller button{
+	border:	none;
+	font-size: 24px;
+	background-color: #ffffff;
+}
+
+.well{
+	font-family: David;
+	font-size: 18px;
+	background-color: #ffffff;
+	border: 1px solid #173644;
+}
+
+.well h3{
+	margin-bottom: 30px; 
+}
+
+.well input{
+	border: none;
+	background-color: #ffffff;
+	padding: 5px;
+	margin: 1px; 
+}
+
+#row{
+	padding: 5px;
+	margin: 0px;
+}
+
+#search-form{
+	margin-bottom: 40px;
+}
+
+@media only screen and (max-width: 768px) {
+	.well{
+		margin-top: 10px;
+	}
+	#controller{
+		margin-top: 10px;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.well{
+		margin-right: 28%;
+	}
+	#search-form{
+		margin-right: 28%;
+	}
+	#controller{
+		margin-right: 28%;
+	}
+}
+@media only screen and (min-width: 900px) {
+	.well{
+		margin-right: 280px;
+	}
+	#search-form{
+		margin-right: 280px;
+	}
+	#controller{
+		margin-right: 280px;
+	}
+}

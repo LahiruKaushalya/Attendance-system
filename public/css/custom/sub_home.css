@@ -1,0 +1,49 @@
+#jum{
+	height: 130px;
+	background-color: #ffffff;
+}
+
+#title1{
+	font-family: David;
+	font-weight: 900;
+	color: #000000;
+	padding-left: 10%;
+}
+
+#first-name{
+	font-family: David;
+	font-weight: 700;
+	color: #173644;
+	padding-left: 15%;
+}
+
+#last-name{
+	font-family: David;
+	font-weight: 600;
+	color: #173644;
+	padding-left: 15%;
+}
+
+@media only screen and (min-width: 600px) {
+	#title1{
+		font-size: 7vw;
+	}
+	#first-name{
+		font-size: 4vw;
+	}
+	#last-name{
+		font-size: 3vw;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	#title1{
+		font-size: 44px;
+	}
+	#first-name{
+		font-size: 24px;
+	}
+	#last-name{
+		font-size: 18px;
+	}
+}

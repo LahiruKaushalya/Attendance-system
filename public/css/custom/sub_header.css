@@ -8,7 +8,7 @@
 }
 
 /*horizontal navbar*/
-.navbar#hor-nav{
+#hor-nav{
   	margin-top: 0px;
 	margin-bottom: 0px;
 	color: #19749e;
@@ -16,7 +16,22 @@
 	border-color: #173644;
 	border-radius: 0px;
 }
-.navbar#hor-nav:focus{
+
+#hor-nav p{
+	font-size: 22px;
+	font-family: David;
+	color: #ffffff;
+	padding-left: 20px;
+	padding-top: 10px;
+  	vertical-align: middle;
+}
+
+#hor-nav i{
+	color: #ffffff;
+	padding-left: 5px;
+}
+
+#hor-nav:focus{
 	color: #173644;
 }
 .navbar-toggle{
@@ -78,8 +93,16 @@
 	border-color: #19749e;
 	border-radius: 0px;
 }
+
 #ver-logout i{
 	color: #FFFFFF;
+	margin-left: 20px;
+}
+
+#ver-logout p{
+	color: #FFFFFF;
+	font-family: David;
+	font-size: 24px;
 	margin-top: 15px;
 	margin-left: 20px;
 }

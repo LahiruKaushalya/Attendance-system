@@ -6,6 +6,5 @@
 
 @section('content')
 
-	<link href="{{URL::asset('css/custom/sub-home.css')}}" rel="stylesheet">
-
+	
 @stop

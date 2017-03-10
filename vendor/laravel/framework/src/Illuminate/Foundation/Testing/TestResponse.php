@@ -11,33 +11,39 @@ use Illuminate\Support\Traits\Macroable;
 use PHPUnit\Framework\Assert as PHPUnit;
 use Symfony\Component\HttpFoundation\Cookie;
 
-class TestResponse extends Response
+class TestResponse
 {
-    use Macroable;
+    use Macroable {
+        __call as macroCall;
+    }
 
     /**
-     * Convert the given response into a TestResponse.
+     * The reponse to delegate to.
+     *
+     * @var \Illuminate\Http\Response
+     */
+    public $baseResponse;
+
+    /**
+     * Create a new test response instance.
+     *
+     * @param  \Illuminate\Http\Response  $response
+     * @return void
+     */
+    public function __construct($response)
+    {
+        $this->baseResponse = $response;
+    }
+
+    /**
+     * Create a new TestResponse from another response.
      *
      * @param  \Illuminate\Http\Response  $response
      * @return static
      */
     public static function fromBaseResponse($response)
     {
-        $testResponse = new static(
-            $response->getContent(), $response->getStatusCode()
-        );
-
-        $testResponse->headers = $response->headers;
-
-        if (isset($response->original)) {
-            $testResponse->original = $response->original;
-        }
-
-        if (isset($response->exception)) {
-            $testResponse->exception = $response->exception;
-        }
-
-        return $testResponse;
+        return new static($response);
     }
 
     /**
@@ -195,9 +201,29 @@ class TestResponse extends Response
      */
     public function assertJson(array $data)
     {
-        PHPUnit::assertArraySubset($data, $this->decodeResponseJson());
+        PHPUnit::assertArraySubset(
+            $data, $this->decodeResponseJson(), false, $this->assertJsonMessage($data)
+        );
 
         return $this;
+    }
+
+    /**
+     * Get the assertion message for assertJson.
+     *
+     * @param  array  $data
+     * @return string
+     */
+    protected function assertJsonMessage(array $data)
+    {
+        $expected = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+
+        $actual = json_encode($this->decodeResponseJson(), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+
+        return 'Unable to find JSON: '.PHP_EOL.PHP_EOL.
+            "[{$expected}]".PHP_EOL.PHP_EOL.
+            'within response JSON:'.PHP_EOL.PHP_EOL.
+            "[{$actual}].".PHP_EOL.PHP_EOL;
     }
 
     /**
@@ -429,6 +455,32 @@ class TestResponse extends Response
     }
 
     /**
+     * Assert that the session has the given errors.
+     *
+     * @param  string|array  $keys
+     * @param  mixed  $format
+     * @return $this
+     */
+    public function assertSessionHasErrors($keys = [], $format = null)
+    {
+        $this->assertSessionHas('errors');
+
+        $keys = (array) $keys;
+
+        $errors = app('session.store')->get('errors');
+
+        foreach ($keys as $key => $value) {
+            if (is_int($key)) {
+                PHPUnit::assertTrue($errors->has($value), "Session missing error: $value");
+            } else {
+                PHPUnit::assertContains($value, $errors->get($key, $format));
+            }
+        }
+
+        return $this;
+    }
+
+    /**
      * Assert that the session does not have a given key.
      *
      * @param  string|array  $key
@@ -476,5 +528,43 @@ class TestResponse extends Response
         }
 
         dd($content);
+    }
+
+    /**
+     * Dynamically access base response parameters.
+     *
+     * @param  string  $key
+     * @return mixed
+     */
+    public function __get($key)
+    {
+        return $this->baseResponse->{$key};
+    }
+
+    /**
+     * Proxy isset() checks to the underlying base response.
+     *
+     * @param  string  $key
+     * @return mixed
+     */
+    public function __isset($key)
+    {
+        return isset($this->baseResponse->{$key});
+    }
+
+    /**
+     * Handle dynamic calls into macros or pass missing methods to the base response.
+     *
+     * @param  string  $method
+     * @param  array   $parameters
+     * @return mixed
+     */
+    public function __call($method, $args)
+    {
+        if (static::hasMacro($method)) {
+            return $this->macroCall($method, $args);
+        }
+
+        return $this->baseResponse->{$method}(...$args);
     }
 }
